@@ -17,24 +17,24 @@ class FactGrid extends React.Component<Props> {
     return (
       <div className="masonry">
         {items ? (
-          items.map((todo: any) =>
+          items.map((_, key) =>
             this.props.showFavorites ? (
-              todo.like ? (
-                <div key={todo.id} className="brick">
+              _.like ? (
+                <div key={key} className="brick">
                   <div className="brick-body">
                     <div className="text-area">
-                      <p>{todo.text}</p>
+                      <p>{_.text}</p>
                     </div>
                     <div className="buttons-area">
                       <p
-                        onClick={() => catsFactsStore.removeCatsFact(todo)}
+                        onClick={() => catsFactsStore.removeCatsFact(_)}
                         className="dislike"
                       >
                         <i className="fa fa-trash-alt" aria-hidden="true" />
                       </p>
                       <p
-                        onClick={() => catsFactsStore.likeCatsFact(todo)}
-                        className={`${todo.like && "true"} like`}
+                        onClick={() => catsFactsStore.likeCatsFact(_)}
+                        className={`${_.like && "true"} like`}
                       >
                         <i className="fa fa-heart" aria-hidden="true" />
                       </p>
@@ -45,21 +45,21 @@ class FactGrid extends React.Component<Props> {
                 ""
               )
             ) : (
-              <div key={todo.id} className="brick">
+              <div key={key} className="brick">
                 <div className="brick-body">
                   <div className="text-area">
-                    <p>{todo.text}</p>
+                    <p>{_.text}</p>
                   </div>
                   <div className="buttons-area">
                     <p
-                      onClick={() => catsFactsStore.removeCatsFact(todo)}
+                      onClick={() => catsFactsStore.removeCatsFact(_)}
                       className="dislike"
                     >
                       <i className="fa fa-trash-alt" aria-hidden="true" />
                     </p>
                     <p
-                      onClick={() => catsFactsStore.likeCatsFact(todo)}
-                      className={`${todo.like && "true"} like`}
+                      onClick={() => catsFactsStore.likeCatsFact(_)}
+                      className={`${_.like && "true"} like`}
                     >
                       <i className="fa fa-heart" aria-hidden="true" />
                     </p>
